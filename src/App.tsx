@@ -1,24 +1,47 @@
-import React from 'react';
-import logo from './logo.svg';
+import React, { useState } from 'react';
 import './App.css';
 
 function App() {
+  const [isOpen, setIsOpen] = useState(false);
+
+  const handleToggle = () => {
+    setIsOpen(!isOpen);
+  };
+
   return (
     <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.tsx</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
+      <nav className="navbar">
+        <div className="navbar-logo">
+          <a href="/">Handball Sports League</a>
+        </div>
+        <ul className={isOpen ? 'navbar-menu active' : 'navbar-menu'}>
+          <li className="navbar-item">
+            <a href="/" className="navbar-link">
+              Home
+            </a>
+          </li>
+          <li className="navbar-item">
+            <a href="/about" className="navbar-link">
+              About
+            </a>
+          </li>
+          <li className="navbar-item">
+            <a href="/community-programs" className="navbar-link">
+              Community Programs
+            </a>
+          </li>
+          <li className="navbar-item">
+            <a href="/contact" className="navbar-link">
+              Contact
+            </a>
+          </li>
+        </ul>
+        <div className="navbar-toggle" onClick={handleToggle}>
+          <span className="navbar-icon"></span>
+          <span className="navbar-icon"></span>
+          <span className="navbar-icon"></span>
+        </div>
+      </nav>
     </div>
   );
 }
